@@ -1,35 +1,28 @@
-import * as React from 'react';
-import * as TabsPrimitive from '@radix-ui/react-tabs'; // استيراد المكونات
+// src/pages/MenuPage.tsx
+
+import React from 'react'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@radix-ui/react-tabs'
 
 const MenuPage = () => {
   return (
-    <div className="p-6">
+    <main className="p-6">
       <h1 className="text-2xl font-bold mb-4">Menu</h1>
+      <Tabs defaultValue="tab1" className="w-full">
+        <TabsList className="flex space-x-2 bg-gray-100 p-2 rounded">
+          <TabsTrigger value="tab1" className="px-4 py-2 bg-white rounded">Tab 1</TabsTrigger>
+          <TabsTrigger value="tab2" className="px-4 py-2 bg-white rounded">Tab 2</TabsTrigger>
+        </TabsList>
 
-      {/* هذا هو العنصر الجذري لـ Tabs */}
-      <TabsPrimitive.Root>
-        {/* هذا هو العنصر الذي يحتوي على الأزرار (TabsTriggers) */}
-        <TabsPrimitive.List className="inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground">
-          {/* Trigger1: زر للتاب الأول */}
-          <TabsPrimitive.Trigger className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium">
-            Tab 1
-          </TabsPrimitive.Trigger>
-          {/* Trigger2: زر للتاب الثاني */}
-          <TabsPrimitive.Trigger className="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium">
-            Tab 2
-          </TabsPrimitive.Trigger>
-        </TabsPrimitive.List>
+        <TabsContent value="tab1" className="mt-4">
+          <p>This is the content of Tab 1.</p>
+        </TabsContent>
 
-        {/* هذا هو المحتوى الذي سيتم عرضه عند اختيار كل تاب */}
-        <TabsPrimitive.Content value="tab1">
-          <div className="mt-2">محتوى التاب 1</div>
-        </TabsPrimitive.Content>
-        <TabsPrimitive.Content value="tab2">
-          <div className="mt-2">محتوى التاب 2</div>
-        </TabsPrimitive.Content>
-      </TabsPrimitive.Root>
-    </div>
-  );
-};
+        <TabsContent value="tab2" className="mt-4">
+          <p>This is the content of Tab 2.</p>
+        </TabsContent>
+      </Tabs>
+    </main>
+  )
+}
 
-export default MenuPage;
+export default MenuPage
