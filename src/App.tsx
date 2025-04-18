@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,6 +9,7 @@ import ScanPage from "./pages/ScanPage";
 import MenuPage from "./pages/MenuPage";
 import HelpPage from "./pages/HelpPage";
 import ReservationsPage from "./pages/ReservationsPage";
+import SupabaseTest from './pages/SupabaseTest'; // استيراد صفحة SupabaseTest
 
 const queryClient = new QueryClient();
 
@@ -25,7 +25,7 @@ const App = () => (
           <Route path="/menu" element={<MenuPage />} />
           <Route path="/help" element={<HelpPage />} />
           <Route path="/reservations" element={<ReservationsPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/test" element={<SupabaseTest />} />  {/* إضافة المسار الجديد */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
