@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { supabase } from './supabase'; // أو عدّل المسار حسب مكان الملف
+import { supabase } from '../supabase'; // أو عدّل المسار حسب مكان الملف
 
 export default function SupabaseTest() {
   useEffect(() => {
