@@ -3,14 +3,13 @@ import { supabase } from '../supabase';
 
 export default function SupabaseTest() {
   useEffect(() => {
-    const checkConnection = async () => {
-      console.log('Trying to fetch data from Supabase...');
-      const { data, error } = await supabase.from('menu').select('*');
-      console.log('Data:', data);
+    const checkTables = async () => {
+      const { data, error } = await supabase.rpc('pg_catalog.pg_tables');
+      console.log('Tables:', data);
       console.log('Error:', error);
     };
-    checkConnection();
+    checkTables();
   }, []);
 
-  return <div>Check the browser console for results</div>;
+  return <div>Checking tables in console...</div>;
 }
