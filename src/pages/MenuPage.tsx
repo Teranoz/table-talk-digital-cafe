@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '../supabase';
+import { supabase } from '../supabase';  // استيراد supabase.ts من المسار المناسب
 
 const MenuPage = () => {
   const [menuItems, setMenuItems] = useState([]);
