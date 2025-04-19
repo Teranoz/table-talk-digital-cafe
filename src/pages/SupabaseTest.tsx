@@ -20,10 +20,11 @@ const SupabaseTest = () => {
     const checkConnection = async () => {
       try {
         setLoading(true);
-        // Using type assertion to tell TypeScript that this is a valid table
+        // Using a more typesafe approach with generic types
         const { data, error } = await supabase
-          .from('menu' as any)
-          .select('*');
+          .from('menu')
+          .select('*')
+          .returns<MenuItem[]>();
         
         if (error) {
           console.error("❌ Error:", error);
