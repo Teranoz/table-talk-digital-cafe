@@ -13,8 +13,8 @@ import ReservationsPage from "./pages/ReservationsPage";
 import SupabaseTest from "./pages/SupabaseTest";
 
 // ✅ استيراد صفحات تسجيل الدخول والتسجيل
-import Login from "./pages/LoginPage";
-import Register from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 const queryClient = new QueryClient();
 
