@@ -9,7 +9,7 @@ import {
 export default function MenuPage() {
   return (
     <div className="p-4">
-      <Tabs defaultValue="food" className="w-full">
+      <Tabs defaultValue="food" className="w-full"> {/* تحديد القيمة الافتراضية هنا */}
         <TabsList>
           <TabsTrigger value="food">الأكل</TabsTrigger>
           <TabsTrigger value="drinks">المشروبات</TabsTrigger>
