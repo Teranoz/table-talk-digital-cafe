@@ -13,7 +13,7 @@ import { format } from 'date-fns';
 import { toast } from "sonner";
 
 const ReservationsPage = () => {
-  const [activeTab, setActiveTab] = useState<string>('new');  {/* القيمة الافتراضية لـ activeTab هنا */}
+  const [activeTab, setActiveTab] = useState<string>('new'); // القيمة الافتراضية لـ activeTab هنا
   
   // باقية الكود هنا
   
