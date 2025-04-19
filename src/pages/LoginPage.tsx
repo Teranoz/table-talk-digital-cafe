@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../supabase/client";
 
-export default function Login() {
+export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
