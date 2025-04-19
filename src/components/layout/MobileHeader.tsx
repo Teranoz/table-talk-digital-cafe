@@ -32,8 +32,8 @@ const MobileHeader: React.FC = () => {
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
-              <SheetTitle>القائمة</SheetTitle>
-              <SheetDescription>معلومات المستخدم وإعدادات الحساب</SheetDescription>
+              <SheetTitle className="sr-only">القائمة</SheetTitle>
+              <SheetDescription className="sr-only">معلومات المستخدم وإعدادات الحساب</SheetDescription>
               <UserProfile />
             </SheetContent>
           </Sheet>
@@ -51,8 +51,8 @@ const MobileHeader: React.FC = () => {
             </Button>
           </SheetTrigger>
           <SheetContent side="right">
-            <SheetTitle>عربة التسوق</SheetTitle>
-            <SheetDescription>راجع العناصر قبل الدفع</SheetDescription>
+            <SheetTitle className="sr-only">عربة التسوق</SheetTitle>
+            <SheetDescription className="sr-only">راجع العناصر قبل الدفع</SheetDescription>
             <CartSheet />
           </SheetContent>
         </Sheet>
