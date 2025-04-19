@@ -1,8 +1,10 @@
+
 import { useEffect, useState } from 'react';
-import { supabase } from './supabase';
+import { supabase } from '../integrations/supabase/client';
+import AppLayout from '@/components/layout/AppLayout';
 
 const SupabaseTest = () => {
-  // حالة لتخزين البيانات
+  // State to store data
   const [menuItems, setMenuItems] = useState([]);
 
   useEffect(() => {
@@ -12,29 +14,31 @@ const SupabaseTest = () => {
         console.error("❌ Error:", error);
       } else {
         console.log("✅ Data:", data);
-        setMenuItems(data); // تعيين البيانات إلى الحالة
+        setMenuItems(data || []); // Set data to state, use empty array as fallback
       }
     };
     checkConnection();
   }, []);
 
   return (
-    <div>
-      <h1>Menu</h1>
-      {menuItems.length === 0 ? (
-        <p>No items found</p>
-      ) : (
-        <ul>
-          {menuItems.map((item) => (
-            <li key={item.id}>
-              <h3>{item.name}</h3>
-              <p>{item.description}</p>
-              <p>Price: ${item.price}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    <AppLayout>
+      <div className="container p-4">
+        <h1 className="text-2xl font-serif font-semibold mb-4">Menu</h1>
+        {menuItems.length === 0 ? (
+          <p className="text-muted-foreground">No items found</p>
+        ) : (
+          <ul className="grid gap-4 md:grid-cols-2">
+            {menuItems.map((item) => (
+              <li key={item.id} className="border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                <h3 className="text-xl font-medium">{item.name}</h3>
+                <p className="text-muted-foreground mt-1">{item.description}</p>
+                <p className="text-cafe-primary font-medium mt-2">Price: ${item.price}</p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </AppLayout>
   );
 };
 
