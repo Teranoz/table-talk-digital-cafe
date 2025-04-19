@@ -10,7 +10,11 @@ import ScanPage from "./pages/ScanPage";
 import MenuPage from "./pages/MenuPage";
 import HelpPage from "./pages/HelpPage";
 import ReservationsPage from "./pages/ReservationsPage";
-import SupabaseTest from "./pages/SupabaseTest"; // تأكد أن الملف موجود في هذا المسار
+import SupabaseTest from "./pages/SupabaseTest";
+
+// ✅ استيراد صفحات تسجيل الدخول والتسجيل
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const queryClient = new QueryClient();
 
@@ -26,7 +30,12 @@ const App = () => (
           <Route path="/menu" element={<MenuPage />} />
           <Route path="/help" element={<HelpPage />} />
           <Route path="/reservations" element={<ReservationsPage />} />
-          <Route path="/test" element={<SupabaseTest />} /> {/* صفحة الاختبار */}
+          <Route path="/test" element={<SupabaseTest />} />
+
+          {/* ✅ المسارات الجديدة */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
