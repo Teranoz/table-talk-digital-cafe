@@ -1,35 +1,40 @@
-import { supabase } from "@/supabase/client";  // استيراد supabase من المسار الصحيح
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { supabase } from "@/supabase/client"; // تأكد من المسار الصحيح للعميل
+import AppLayout from "@/components/layout/AppLayout";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 export default function MenuPage() {
   const [foodItems, setFoodItems] = useState([]);
   const [drinkItems, setDrinkItems] = useState([]);
 
   useEffect(() => {
-    // استعلام لجلب قائمة الطعام من Supabase
-    const fetchMenu = async () => {
+    const fetchMenuItems = async () => {
+      // استعلام للحصول على الأطعمة
       const { data: foodData, error: foodError } = await supabase
-        .from("food_menu")
-        .select("*");
+        .from("menu")
+        .select("*")
+        .eq("category", "food");
 
       if (foodError) {
-        console.error("Error fetching food menu:", foodError.message);
+        console.error("Error fetching food data:", foodError.message);
       } else {
-        setFoodItems(foodData);
+        setFoodItems(foodData); // تخزين الأطعمة في الحالة
       }
 
+      // استعلام للحصول على المشروبات
       const { data: drinkData, error: drinkError } = await supabase
-        .from("drink_menu")
-        .select("*");
+        .from("menu")
+        .select("*")
+        .eq("category", "drink");
 
       if (drinkError) {
-        console.error("Error fetching drink menu:", drinkError.message);
+        console.error("Error fetching drink data:", drinkError.message);
       } else {
-        setDrinkItems(drinkData);
+        setDrinkItems(drinkData); // تخزين المشروبات في الحالة
       }
     };
 
-    fetchMenu();
+    fetchMenuItems();
   }, []);
 
   return (
@@ -46,9 +51,16 @@ export default function MenuPage() {
               <h3 className="font-serif text-xl font-semibold">قائمة الأكل</h3>
               <p className="text-muted-foreground">عرض قائمة الأكل الخاصة بنا</p>
               <ul>
-                {foodItems.map(item => (
-                  <li key={item.id}>{item.name}</li>  {/* عرض اسم الطعام */}
-                ))}
+                {foodItems.length > 0 ? (
+                  foodItems.map((item) => (
+                    <li key={item.id} className="border-b py-2">
+                      <p>{item.name}</p>
+                      <p>{item.description}</p> {/* إذا كان هناك وصف للطعام */}
+                    </li>
+                  ))
+                ) : (
+                  <p>لا توجد أطعمة حالياً في القائمة.</p>
+                )}
               </ul>
             </div>
           </TabsContent>
@@ -58,9 +70,16 @@ export default function MenuPage() {
               <h3 className="font-serif text-xl font-semibold">قائمة المشروبات</h3>
               <p className="text-muted-foreground">عرض قائمة المشروبات الخاصة بنا</p>
               <ul>
-                {drinkItems.map(item => (
-                  <li key={item.id}>{item.name}</li>  {/* عرض اسم المشروب */}
-                ))}
+                {drinkItems.length > 0 ? (
+                  drinkItems.map((item) => (
+                    <li key={item.id} className="border-b py-2">
+                      <p>{item.name}</p>
+                      <p>{item.description}</p> {/* إذا كان هناك وصف للمشروب */}
+                    </li>
+                  ))
+                ) : (
+                  <p>لا توجد مشروبات حالياً في القائمة.</p>
+                )}
               </ul>
             </div>
           </TabsContent>
